@@ -50,7 +50,7 @@ class UserController extends Controller
         error_log($user);
         //dd($user);
         $user->save();
-        return redirect('/');
+        return redirect(route('users.index'));
     }
 
     /**
@@ -94,7 +94,7 @@ class UserController extends Controller
         $user->save();
 
         error_log($user);
-        return redirect('/')->with('success', 'Utilisateur mis à jour avec succès');
+        return redirect(route('users.index'))->with('success', 'Utilisateur mis à jour avec succès');
     }
 
     /**
@@ -110,9 +110,9 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        dd($user);
+        //dd($user);
 
-        return redirect('/')->with('success', 'Utilisateur supprimé avec succès');
+        return redirect(route('users.index'))->with('success', 'Utilisateur supprimé avec succès');
     }
 
     // public function update()

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('content1')
 <h1 class="text-center">Ajout un nouvel utilisateur</h1>
 
 <form method="post" action="{{ route('postes.store') }}">
@@ -27,3 +28,5 @@
     <button class="btn btn-primary">Valider</button>
 
 </form>
+
+@endsection

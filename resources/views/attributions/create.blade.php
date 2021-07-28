@@ -1,11 +1,11 @@
-<!-- //@extends('layouts.app') -->
+@extends('layouts.app')
 
-
+@section('content1')
 
 <h1 class="text-center">Ajout d'une nouvelle attribution</h1>
 
 
-<form method="post" action="/attributions">
+<form method="post" action="{{ route('attributions.index') }}">
     @csrf
     <div class="form-group">
         <label for="user_id">Nom d'utilisateur : </label>
@@ -50,3 +50,5 @@
     <button class="btn btn-primary">Valider</button>
 
 </form>
+
+@endsection

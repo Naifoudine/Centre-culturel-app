@@ -31,7 +31,7 @@ class ComputerController extends Controller
         error_log($poste);
         // dd($poste);
         $poste->save();
-        return redirect('/')->with('message', 'Poste ajouté !');
+        return redirect(route('postes.index'))->with('message', 'Poste ajouté !');
     }
 
     /**
@@ -76,7 +76,7 @@ class ComputerController extends Controller
         $poste->save();
 
         error_log($poste);
-        return redirect('/')->with('success', 'Ordinateur mis à jour avec succès');
+        return redirect(route('postes.index'))->with('success', 'Ordinateur mis à jour avec succès');
     }
 
     /**
@@ -91,8 +91,8 @@ class ComputerController extends Controller
         $poste = Computer::findOrFail($id);
         $poste->delete();
 
-        dd($poste);
+        //dd($poste);
 
-        return redirect('/')->with('success', 'Ordinateur supprimé avec succès');
+        return redirect(route('postes.index'))->with('success', 'Ordinateur supprimé avec succès');
     }
 }
