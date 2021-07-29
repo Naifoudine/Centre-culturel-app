@@ -5,6 +5,10 @@
 @section('content1')
 <h1 class="text-center">Utilisateurs</h1>
 
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <a class="btn btn-primary" href="{{ route('users.create') }}"><i class="bi bi-plus-square"></i>Ajouter une nouvel utilisateur</a>
+</div>
+
 <table class="table">
     <thead>
         <tr>
