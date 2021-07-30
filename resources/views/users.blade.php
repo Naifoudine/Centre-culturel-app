@@ -5,6 +5,16 @@
 @section('content1')
 <h1 class="text-center">Utilisateurs</h1>
 
+@if (session('error'))
+    <div class="alert alert-succes">
+        {{ session('error') }}
+    </div>
+@elseif(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <a class="btn btn-primary" href="{{ route('users.create') }}"><i class="bi bi-plus-square"></i>Ajouter une nouvel utilisateur</a>
 </div>

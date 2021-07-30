@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Computer;
 use App\Models\Attribution;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Input\Input;
 
 class AttributionController extends Controller
 {
@@ -34,10 +36,27 @@ class AttributionController extends Controller
         $attribution->heureDebut = request('heureDebut');
         $attribution->heureFin = request('heureFin');
 
+        $conflictAttribution = Attribution::where('pc_id', $attribution->pc_id)
+        ->where('date', "=", $attribution->date)
+        ->where('heureDebut', "<=", $attribution->heureDebut)
+        ->where('heureFin', ">=", $attribution->heureFin)
+        ->get();
+
         error_log($attribution);
-        //dd($attribution);
-        $attribution->save();
-        return redirect(route('attributions.index'));
+
+        //var_dump(($conflictAttribution->isEmpty()));
+
+        if($conflictAttribution->isEmpty()){
+            //dd($conflictAttribution);
+            $attribution->save();
+            return redirect(route('attributions.index'))->with('success', 'Attribution enregistrée !');
+            
+        }else{
+            
+            return redirect()->back()->withInput()->with('error', 'Poste indisponible, veuillez choisir un autre créneau ou un autre poste !'); //. $conflictAttribution = array();
+            
+        }
+
     }
 
     public function create()
@@ -59,7 +78,7 @@ class AttributionController extends Controller
         return view('attributions/create', [
             'Computers' => $Computers,
             'Users' => $Users
-        ])->with('message', 'Attribution ajoutée avec succès !'); //revoir messages
+        ])->with('success', 'Attribution ajoutée avec succès !'); //revoir messages
     }
 
 
@@ -121,16 +140,37 @@ class AttributionController extends Controller
     public function update(Request $request, $id)
     {
 
-        $attributions = Attribution::find($id);
-        $attributions->user_id = $request->user_id;
-        $attributions->pc_id = $request->pc_id;
-        $attributions->date = $request->date;
-        $attributions->heureDebut = $request->heureDebut;
-        $attributions->heureFin = $request->heureFin;
-        $attributions->save();
+        $attribution = Attribution::find($id);
+        $attribution->user_id = $request->user_id;
+        $attribution->pc_id = $request->pc_id;
+        $attribution->date = $request->date;
+        $attribution->heureDebut = $request->heureDebut;
+        $attribution->heureFin = $request->heureFin;
+        $attribution->save();
 
-        error_log($attributions);
-        return redirect(route('attributions.index'))->with('success', 'Ordinateur mis à jour avec succès');
+        error_log($attribution);
+        
+        $conflictAttribution = Attribution::where('pc_id', $attribution->pc_id)
+        ->where('date', "=", $attribution->date)
+        ->where('heureDebut', "<=", $attribution->heureDebut)
+        ->orWhere('heureFin', ">=", $attribution->heureFin)
+        ->get();
+
+        error_log($attribution);
+
+        //var_dump(($conflictAttribution->isEmpty()));
+
+        if($conflictAttribution->isEmpty()){
+            $attribution->save();
+            return redirect(route('attributions.index'))->with('success', 'Attribution  mise à jour avec succès !');
+            
+        }else{
+            
+            return redirect()->back()->withInput()->with('error', 'Poste indisponible, veuillez choisir un autre créneau ou un autre poste !');
+            
+        }
+
+        return redirect(route('attributions.index'))->with('success', 'Attribution mise à jour avec succès');
     }
 
     /**
@@ -147,6 +187,6 @@ class AttributionController extends Controller
 
         //dd($attributions);
 
-        return redirect(route('attributions.index'))->with('success', 'Ordinateur supprimé avec succès');
+        return redirect(route('attributions.index'))->with('success', 'Attribution supprimée avec succès');
     }
 }

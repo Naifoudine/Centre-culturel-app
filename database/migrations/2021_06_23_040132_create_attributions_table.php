@@ -21,8 +21,8 @@ class CreateAttributionsTable extends Migration
             $table->time('heureDebut');
             $table->time('heureFin');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('pc_id')->references('id')->on('computers');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('pc_id')->references('id')->on('computers')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

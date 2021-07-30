@@ -14,6 +14,15 @@
 </style>
 <div class="mybtn-right"><a class="btn btn-primary" href="{{ route('attributions.create') }}"> 
 Ajouter une nouvelle attribution</a> </div>-->
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@elseif(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <a class="btn btn-primary" href="{{ route('attributions.create') }}"><i class="bi bi-plus-square"></i>Ajouter une nouvelle attribution</a>

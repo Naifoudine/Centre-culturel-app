@@ -2,6 +2,13 @@
 
 @section('content1')
 <div class="container mt-5">
+    <h1 class="text-center">Edition d'une attribution</h1>
+
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
     <form method="post" action="{{route('attributions.update', $attribution->id)}}">
         @csrf
         @method('PATCH')

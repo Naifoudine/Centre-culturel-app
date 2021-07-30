@@ -50,7 +50,7 @@ class UserController extends Controller
         error_log($user);
         //dd($user);
         $user->save();
-        return redirect(route('users.index'));
+        return redirect(route('users.index'))->with('success', 'Utilisateur ajouté avec succès');
     }
 
     /**
