@@ -92,7 +92,7 @@
                         <!-- /END Separator -->
 
                         <li>
-                            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                            <a href="#" class="bg-dark text-white list-group-item list-group-item-action">
                                 <div class="d-flex w-100 justify-content-start align-items-center">
                                     <span class="fa fa-dashboard fa-fw mr-3"></span>
                                     <span class="menu-collapsed">Tableau de bord</span>
@@ -100,7 +100,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('attributions.index') }}" class="bg-dark list-group-item list-group-item-action">
+                            <a href="{{ route('attributions.index') }}" class="bg-dark text-white list-group-item list-group-item-action">
                                 <div class="d-flex w-100 justify-content-start align-items-center">
                                     <span class="fa fa-calendar fa-fw mr-3"></span>
                                     <span class="menu-collapsed">Attributions</span>
@@ -108,7 +108,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('users.index') }}" class="bg-dark list-group-item list-group-item-action">
+                            <a href="{{ route('users.index') }}" class="bg-dark text-white list-group-item list-group-item-action">
                                 <div class="d-flex w-100 justify-content-start align-items-center">
                                     <span class="fa fa-users fa-fw mr-3"></span>
                                     <span class="menu-collapsed">Utilisateurs</span>
@@ -116,7 +116,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('postes.index') }}" class="bg-dark list-group-item list-group-item-action">
+                            <a href="{{ route('postes.index') }}" class="bg-dark text-white list-group-item list-group-item-action">
                                 <div class="d-flex w-100 justify-content-start align-items-center">
                                     <span class="fa fa-desktop fa-fw mr-3"></span>
                                     <span class="menu-collapsed">Ordinateurs</span>
@@ -127,7 +127,7 @@
                         <li class="list-group-item sidebar-separator-title text-muted align-items-center menu-collapsed d-flex">
                         </li>
                         <!-- /END Separator -->
-                        <a href="#" data-toggle="sidebar-colapse" class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
+                        <a href="#" data-toggle="sidebar-colapse" class="bg-dark text-white list-group-item list-group-item-action d-flex align-items-center">
                             <div class="d-flex w-100 justify-content-start align-items-center">
                                 <span id="collapse-icon" class="fa fa-2x mr-3 fa-angle-double-left"></span>
                                 <span id="collapse-text" class="menu-collapsed">Réduire</span>
