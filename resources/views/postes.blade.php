@@ -1,6 +1,6 @@
 {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
 
-@extends('layouts.app')
+@extends('layouts.app1')
 
 @section('content1')
 
@@ -17,7 +17,7 @@
 @endif
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <a class="btn btn-primary" href="{{ route('postes.create') }}"><i class="bi bi-plus-square"></i>Ajouter une nouveau PC</a>
+    <a class="btn btn-primary" href="{{ route('postes.create') }}"><i class="bi bi-plus-square"></i>Ajouter un nouveau PC</a>
 </div>
 
 <table class="table">
