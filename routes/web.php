@@ -28,10 +28,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// Route::get('/bonjour/{nom}', function () {
-//     return view('bonjour');
-// });
-
+Route::middleware(['auth', 'role:admin'])->group(function() {
 /**
  * Routes des attributions
  */
@@ -88,35 +85,13 @@ Route::delete(
     [UserController::class, 'destroy']
 )->name('users.destroy');
 
-
-
-// Route::post('/users', 'App\Http\Controllers\UserController@store')->name('users.store');
-
-//Route::get('/users/update', [UserController::class, 'update'])->name('users.update');
-
-// Route::get('/dashboard', function () {
-//     $attribution = \App\Models\Attribution::all();
-//     return view('dashboard', [
-//         'dashboard' => $attribution,
-//     ]);
-// });
-
-// Route::get('/bonjour/{nom}', function () {
-//     $nom = request('nom');
-
-//     return view('bonjour', [
-//         'nom' => $nom,
-//     ]);
-// });
-
-// Route::post('/addComputer', function () {
-//     $computer = new \App\Models\Computer;
-//     $computer->nom_pc = request('nom_pc');
-//     $computer->nom_pc = request('Adresse_ip');
-
-//     $computer->save();
-// });
-
-Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+/**
+ * TABLEAU DE BORD
+ */
+Route::get('/dashboard', function () {
+    $attribution = \App\Models\Attribution::all();
+    return view('dashboard', [
+        'dashboard' => $attribution,
+    ]);
+})->name('dashboard');
+});
